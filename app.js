@@ -23,7 +23,7 @@ app.get('/', (req, res) => res.send('Welcome page!'))
 //fetch car data form name
 
 app.post('/car/:name', async (req, res) => {
-    const cname = req.params.cname;
+    const cname = req.params.name;
 
     const cdata = await cardata.findOne({
         name: cname
