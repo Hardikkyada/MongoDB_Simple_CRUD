@@ -2,14 +2,14 @@ require("dotenv").config();
 const express = require('express')
 const app = express()
 app.use(express.json());
-const port = 8082
+const port = process.env.PORT || 8082;
 const mongoose = require("mongoose");
 
 
 
 //connect Model
-mongoose.connect(process.env.con).then( () =>
-    console.log("mongodb connected.....") 
+mongoose.connect(process.env.con).then(() =>
+    console.log("mongodb connected.....")
 );
 
 const cardata = require("./models/car");
@@ -22,8 +22,8 @@ app.get('/', (req, res) => res.send('Welcome page!'))
 
 //fetch car data form name
 
-app.post('/car', async (req, res) => {
-    const cname =  req.body.cname;
+app.post('/car/:name', async (req, res) => {
+    const cname = req.params.cname;
 
     const cdata = await cardata.findOne({
         name: cname
@@ -58,12 +58,12 @@ app.put("/update_car_satus", async (req, res) => {
         res.json({ data: "Car id Not Found" });
     }
 
-    
+
 });
 
 //delete company
 
-app.delete("/delete_car/:name", async (req,res) => {
+app.delete("/delete_car/:name", async (req, res) => {
 
     const deletecar = await cardata.findOneAndDelete({
         //name: req.body.name,
