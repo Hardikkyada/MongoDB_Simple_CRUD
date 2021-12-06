@@ -7,11 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-<<<<<<< HEAD
   "engines": {
-=======
-   "engines": {
->>>>>>> 5b62bbdf2e5f2b4e1c2b1ac36849b85425d75e84
     "node": "14.18.0"
   },
   "author": "",
